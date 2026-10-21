@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Evas Haarstudio — Friseur in Inning am Ammersee</title>
+<meta name="description" content="Evas Haarstudio in Inning am Ammersee: Haarschnitt, Farbe, Strähnen und Hochsteckfrisuren. Termin bequem online buchen.">
+<link rel="stylesheet" href="fonts.css">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<nav>
+  <div class="brand">Evas <span>Haarstudio</span></div>
+  <div class="nav-links">
+    <a href="#leistungen">Leistungen</a>
+    <a href="#ueber-eva">Über Eva</a>
+    <a href="#galerie">Galerie</a>
+    <a href="#buchen">Termin buchen</a>
+    <a href="#kontakt">Kontakt</a>
+  </div>
+  <a href="#buchen" class="nav-cta">Jetzt buchen</a>
+</nav>
+
+<header class="hero">
+  <div class="hero-text">
+    <div class="eyebrow">Friseur · Inning am Ammersee</div>
+    <h1>Dein Friseur am Ammersee.</h1>
+    <p>Haarschnitt, Farbe, Strähnen und Hochsteckfrisuren — persönlich beraten und bequem online gebucht, rund um die Uhr.</p>
+    <div class="hero-actions">
+      <a href="#buchen" class="btn-primary">Termin online buchen</a>
+      <a href="tel:+498143959846" class="btn-ghost">08143 959846 anrufen</a>
+    </div>
+    <div class="hero-meta">
+      <div><strong>Di–Fr</strong><span>geöffnet</span></div>
+      <div><strong>Online</strong><span>Termin rund um die Uhr</span></div>
+      <div><strong>Inning</strong><span>Münchener Straße 13</span></div>
+    </div>
+  </div>
+  <div class="hero-visual" aria-hidden="true">
+    <svg viewBox="0 0 400 480" xmlns="http://www.w3.org/2000/svg">
+      <rect x="0" y="0" width="400" height="480" rx="18" fill="var(--panel)"/>
+      <circle cx="200" cy="170" r="92" fill="var(--accent-soft)"/>
+      <path d="M120 260 C 120 340, 280 340, 280 260" stroke="var(--ink)" stroke-width="3" fill="none" opacity="0.15"/>
+      <g stroke="var(--accent)" stroke-width="6" stroke-linecap="round">
+        <line x1="150" y1="120" x2="250" y2="220"/>
+        <line x1="250" y1="120" x2="150" y2="220"/>
+      </g>
+      <circle cx="150" cy="120" r="14" fill="none" stroke="var(--accent)" stroke-width="5"/>
+      <circle cx="150" cy="220" r="14" fill="none" stroke="var(--accent)" stroke-width="5"/>
+    </svg>
+  </div>
+</header>
+
+<section id="leistungen" class="section">
+  <div class="section-head">
+    <div class="eyebrow">Preisliste</div>
+    <h2>Unsere Leistungen</h2>
+  </div>
+  <div id="services-grid" class="services-grid">
+    <!-- wird per JS aus /api/services befüllt -->
+  </div>
+</section>
+
+<section id="ueber-eva" class="section section-panel">
+  <div class="section-head">
+    <div class="eyebrow">Dein Salon</div>
+    <h2>Über Eva</h2>
+  </div>
+  <div class="about-box">
+    <div class="team-avatar" style="--c: var(--accent)">E</div>
+    <p><span class="fill">Kurze Vorstellung von Eva einsetzen — z. B. Ausbildung, Erfahrung, Spezialgebiete, was ihr im Salon wichtig ist. Bitte nur Angaben verwenden, die Eva selbst bestätigt hat.</span></p>
+  </div>
+</section>
+
+<section id="galerie" class="section">
+  <div class="section-head">
+    <div class="eyebrow">Vorher / Nachher</div>
+    <h2>Arbeiten aus dem Salon</h2>
+    <p class="section-sub"><span class="fill">Platzhalter — hier kommen echte Fotos von Eva rein (Einverständnis der abgebildeten Kund:innen einholen).</span></p>
+  </div>
+  <div class="ba-grid">
+    <div class="ba-pair">
+      <div class="photo-placeholder"><span>Vorher</span></div>
+      <div class="photo-placeholder"><span>Nachher</span></div>
+    </div>
+    <div class="ba-pair">
+      <div class="photo-placeholder"><span>Vorher</span></div>
+      <div class="photo-placeholder"><span>Nachher</span></div>
+    </div>
+  </div>
+  <div class="photo-grid" style="margin-top:1.2rem;">
+    <div class="photo-placeholder"><span>Foto: Salon innen</span></div>
+    <div class="photo-placeholder"><span>Foto: Arbeitsplatz</span></div>
+    <div class="photo-placeholder"><span>Foto: Eva bei der Arbeit</span></div>
+  </div>
+</section>
+
+<section id="bewertungen" class="section section-panel">
+  <div class="section-head">
+    <div class="eyebrow">Kundenstimmen</div>
+    <h2>Bewertungen auf Google</h2>
+    <div class="rating-badge"><span class="fill">★★★★★ Sternezahl &amp; Anzahl der Google-Bewertungen einsetzen</span></div>
+    <p class="section-sub">Was Kund:innen über Evas Haarstudio sagen, lesen Sie direkt bei Google.</p>
+  </div>
+  <p class="reviews-link"><a href="https://www.google.com/maps/search/?api=1&amp;query=Evas+Haarstudio+Inning+am+Ammersee" target="_blank" rel="noopener">Bewertungen auf Google ansehen →</a></p>
+</section>
+
+<section id="buchen" class="section">
+  <div class="section-head">
+    <div class="eyebrow">Online-Terminbuchung</div>
+    <h2>Wähle Leistung, Tag und Uhrzeit</h2>
+    <p class="section-sub">Freie Termine werden live aus Evas Kalender geladen.</p>
+  </div>
+
+  <div class="booking-widget">
+    <div class="booking-step">
+      <label for="service-select">1. Leistung</label>
+      <select id="service-select"></select>
+    </div>
+
+    <div class="booking-step">
+      <label>2. Tag</label>
+      <div id="day-picker" class="day-picker"></div>
+    </div>
+
+    <div class="booking-step">
+      <label>3. Uhrzeit</label>
+      <div id="slot-picker" class="slot-picker">
+        <div class="slot-hint">Bitte zuerst einen Tag wählen.</div>
+      </div>
+    </div>
+
+    <form id="booking-form" class="booking-form">
+      <div class="booking-summary" id="booking-summary">
+        <span class="summary-placeholder">Noch keine Zeit ausgewählt.</span>
+      </div>
+      <div class="form-row">
+        <div>
+          <label for="name">Name</label>
+          <input type="text" id="name" required>
+        </div>
+        <div>
+          <label for="email">E-Mail</label>
+          <input type="email" id="email" required>
+        </div>
+      </div>
+      <div class="form-row">
+        <div>
+          <label for="phone">Telefon (optional)</label>
+          <input type="tel" id="phone">
+        </div>
+      </div>
+      <button type="submit" class="submit-btn" id="submit-btn" disabled>Termin verbindlich buchen</button>
+      <div class="form-note" id="form-note"></div>
+    </form>
+  </div>
+</section>
+
+<section id="kontakt" class="section section-panel">
+  <div class="contact-grid">
+    <div>
+      <div class="eyebrow">Kontakt &amp; Anfahrt</div>
+      <h2>Besuch uns in Inning</h2>
+      <ul class="contact-list">
+        <li><strong>Adresse:</strong> Münchener Straße 13, 82266 Inning am Ammersee</li>
+        <li><strong>Telefon:</strong> <a href="tel:+498143959846">08143 959846</a></li>
+        <li><strong>E-Mail:</strong> <span class="fill">E-Mail-Adresse einsetzen</span></li>
+        <li><strong>Di, Mi, Fr:</strong> 8:30–18:00 Uhr</li>
+        <li><strong>Do:</strong> 8:30–19:00 Uhr</li>
+        <li><strong>Mo, Sa, So:</strong> geschlossen</li>
+        <li><strong>Instagram:</strong> <span class="fill">@Handle einsetzen (falls vorhanden)</span></li>
+      </ul>
+    </div>
+    <div class="map-embed">
+      <iframe
+        title="Karte: Evas Haarstudio, Münchener Straße 13, 82266 Inning am Ammersee"
+        src="https://www.google.com/maps?q=M%C3%BCnchener+Stra%C3%9Fe+13,+82266+Inning+am+Ammersee&amp;output=embed"
+        width="100%" height="320" style="border:0;" loading="lazy" referrerpolicy="no-referrer-when-downgrade" allowfullscreen></iframe>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="brand">Evas Haarstudio</div>
+  <div>&copy; 2026 Evas Haarstudio · Münchener Straße 13, 82266 Inning am Ammersee</div>
+  <div class="footer-legal"><a href="impressum.html">Impressum</a> · <a href="datenschutz.html">Datenschutz</a></div>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>
