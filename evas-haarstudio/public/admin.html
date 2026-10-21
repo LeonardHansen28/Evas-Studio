@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Buchungsübersicht — Evas Haarstudio</title>
+<link rel="stylesheet" href="fonts.css">
+<link rel="stylesheet" href="style.css">
+<style>
+  .admin-wrap{ max-width:1000px; margin:0 auto; padding:3rem 5% 5rem; }
+  .login-box{ max-width:340px; margin:6rem auto; text-align:center; }
+  .login-box input{ margin:1rem 0; }
+  table{ width:100%; border-collapse:collapse; background:var(--white); border:1px solid var(--line); border-radius:6px; overflow:hidden; }
+  th, td{ padding:0.7rem 0.9rem; text-align:left; border-bottom:1px solid var(--line); font-size:0.92rem; }
+  th{ background:var(--panel); font-weight:600; }
+  tr:last-child td{ border-bottom:none; }
+  .status-bestätigt{ color:#3d6e3f; font-weight:600; }
+  .status-storniert{ color:#a3312d; font-weight:600; text-decoration:line-through; }
+  .cancel-btn{ background:none; border:1px solid var(--line); border-radius:4px; padding:0.35rem 0.8rem; font-size:0.82rem; cursor:pointer; color:var(--ink-soft); }
+  .cancel-btn:hover{ border-color:#a3312d; color:#a3312d; }
+  .toolbar{ display:flex; justify-content:space-between; align-items:center; margin-bottom:1.5rem; }
+  .refresh-btn{ background:var(--accent); color:var(--white); border:none; padding:0.6rem 1.2rem; border-radius:4px; cursor:pointer; font-size:0.9rem; }
+  .empty-hint{ color:var(--ink-soft); padding:2rem; text-align:center; }
+</style>
+</head>
+<body>
+<nav>
+  <div class="brand">Evas <span>Haarstudio</span></div>
+  <a href="index.html" class="nav-cta">Zur Webseite</a>
+</nav>
+<div id="login-view" class="login-box">
+  <h2 style="font-family:'Fraunces',serif; margin-bottom:0.6rem;">Buchungsübersicht</h2>
+  <p style="color:var(--ink-soft); font-size:0.92rem;">Nur für den Salon-Betreiber</p>
+  <input type="password" id="password-input" placeholder="Passwort" style="width:100%; padding:0.7rem 0.9rem; border:1px solid var(--line); border-radius:4px;">
+  <button class="submit-btn" onclick="login()" style="width:100%;">Anmelden</button>
+  <div id="login-error" style="color:#a3312d; font-size:0.88rem; margin-top:0.8rem;"></div>
+</div>
+<div id="admin-view" class="admin-wrap" style="display:none;">
+  <div class="toolbar">
+    <h1 style="font-family:'Fraunces',serif; font-size:1.6rem;">Buchungsübersicht</h1>
+    <button class="refresh-btn" onclick="loadBookings()">Aktualisieren</button>
+  </div>
+  <div id="bookings-container"></div>
+</div>
+<script>
+  let password = '';
+  async function login() {
+    password = document.getElementById('password-input').value;
+    const res = await fetch(`/api/admin/bookings?password=${encodeURIComponent(password)}`);
+    if (!res.ok) { document.getElementById('login-error').textContent = 'Falsches Passwort.'; return; }
+    document.getElementById('login-view').style.display = 'none';
+    document.getElementById('admin-view').style.display = 'block';
+    renderBookings(await res.json());
+  }
+  async function loadBookings() {
+    const res = await fetch(`/api/admin/bookings?password=${encodeURIComponent(password)}`);
+    if (res.ok) renderBookings(await res.json());
+  }
+  function renderBookings(data) {
+    const container = document.getElementById('bookings-container');
+    if (!data.bookings || data.bookings.length === 0) {
+      container.innerHTML = '<div class="empty-hint">Noch keine Buchungen.</div>';
+      return;
+    }
+    container.innerHTML = `
+      <table>
+        <thead><tr><th>Datum</th><th>Uhrzeit</th><th>Kunde</th><th>Leistung</th><th>Kontakt</th><th>Status</th><th></th></tr></thead>
+        <tbody>
+          ${data.bookings.map(b => `
+            <tr>
+              <td>${b.date.split('-').reverse().join('.')}</td>
+              <td>${b.time}</td>
+              <td>${b.name}</td>
+              <td>${b.serviceName}</td>
+              <td>${b.email}${b.phone ? ' · ' + b.phone : ''}</td>
+              <td class="status-${b.status}">${b.status}</td>
+              <td>${b.status !== 'storniert' ? `<button class="cancel-btn" onclick="cancelBooking('${b.id}')">Stornieren</button>` : ''}</td>
+            </tr>
+          `).join('')}
+        </tbody>
+      </table>
+    `;
+  }
+  async function cancelBooking(id) {
+    if (!confirm('Diese Buchung wirklich stornieren?')) return;
+    await fetch(`/api/cancel/${id}`, { method: 'POST' });
+    loadBookings();
+  }
+  document.getElementById('password-input').addEventListener('keydown', e => { if (e.key === 'Enter') login(); });
+</script>
+</body>
+</html>
